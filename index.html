@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ember - Stacked tree view</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+    {{render nodeTree content}}
+  </script>
+
+  <script type="text/x-handlebars" id="nodeTree">
+    <div class="node-header">
+      <span class="node-commands">
+        <h1>{{content.name}}</h1>
+        {{#if hasChilds}}
+          <button {{action collapse}}>
+            {{#if collapsed}}
+              Expand
+            {{else}}
+              Collapse
+            {{/if}}
+          </button>
+        {{/if}}
+      </span>
+    </div>
+    <div class="node-content">
+      {{#unless collapsed}}
+        {{#each child in content.childs}}
+          {{render nodeTree child}}
+        {{/each}}
+      {{/unless}}
+    </div>
+    <span class="node-commands">
+      Add a subsection
+    </span>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.2.0.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
