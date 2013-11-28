@@ -21,11 +21,7 @@
         {{content.name}}
         {{#if hasChilds}}
           <button {{action collapse}}>
-            {{#if collapsed}}
-              Expand
-            {{else}}
-              Collapse
-            {{/if}}
+            {{view.collapseButtonLabel}}
           </button>
         {{/if}}
       </span>
@@ -37,24 +33,17 @@
         {{/each}}
       {{/unless}}
     </div>
-    {{#if hasChilds}}
-      {{#unless collapsed}}
-        <div class = "node-strip">
-        <span class="node-commands">
-          {{content.name}}
-          {{#if hasChilds}}
-            <button {{action collapse}}>
-              {{#if collapsed}}
-                Expand
-              {{else}}
-                Collapse
-              {{/if}}
-            </button>
-          {{/if}}
-        </span>
-        </div>
-      {{/unless}}
-      {{/if}}
+    {{#if view.displayFooter}}
+      <div class = "node-strip">
+      <span class="node-commands">
+        {{content.name}}
+        <button {{action collapse}}>
+          {{view.collapseButtonLabel}}
+        </button>
+      </span>
+      </div>
+    {{/if}}
+
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>

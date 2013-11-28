@@ -41,11 +41,13 @@ App.NodeTreeView = Ember.View.extend({
   classNames: ['node'],
 
 	didInsertElement: function () {
+    console.log('did insert element ',this);
     if(this.get('parentView.viewName') === 'nodeTree') {
   		var color = this.get('parentView').$('.node-strip').css('background-color'),
           newColor = this.shadeColor(color, 10);
 
-  		this.$('.node-strip').css('background-color', newColor);
+  		this.$('.node-strip:first').css('background-color', newColor);
+      this.$('.node-strip:last').css('background-color', newColor);
     }
 	},
 
@@ -67,7 +69,11 @@ App.NodeTreeView = Ember.View.extend({
     B = (B < 255)? B : 255;
 
     return "rgb(%@, %@, %@)".fmt(R, G, B);
-	}
+	},
+
+  collapseButtonLabel: function () {
+    return this.get('controller.collapsed')? "Expand" : "Collapse";
+  }.property('controller.collapsed')
 
 });
 
