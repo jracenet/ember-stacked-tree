@@ -16,9 +16,9 @@
   </script>
 
   <script type="text/x-handlebars" id="nodeTree">
-    <div class="node-header">
+    <div class="node-strip">
       <span class="node-commands">
-        <h1>{{content.name}}</h1>
+        {{content.name}}
         {{#if hasChilds}}
           <button {{action collapse}}>
             {{#if collapsed}}
@@ -37,6 +37,24 @@
         {{/each}}
       {{/unless}}
     </div>
+    {{#if hasChilds}}
+      {{#unless collapsed}}
+        <div class = "node-strip">
+        <span class="node-commands">
+          {{content.name}}
+          {{#if hasChilds}}
+            <button {{action collapse}}>
+              {{#if collapsed}}
+                Expand
+              {{else}}
+                Collapse
+              {{/if}}
+            </button>
+          {{/if}}
+        </span>
+        </div>
+      {{/unless}}
+      {{/if}}
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
