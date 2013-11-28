@@ -3,6 +3,10 @@
     margin: 20px;
 }
 
+.node {
+   padding-left: 20px;
+}
+
 .node-header {
-	background-color: #0000FF
+	background-color: #04BAEE
 }
