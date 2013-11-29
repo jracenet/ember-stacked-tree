@@ -44,6 +44,9 @@ App.NodeTreeView = Ember.View.extend({
     if(this.get('parentView.viewName') === 'nodeTree') {
   		var color = this.get('parentView').$('.node-strip').css('background-color'),
           newColor = this.shadeColor(color, 10);
+      console.log(this.$().parent('.node'));
+      this.get('parentView').$('.node').css('border-left-color', newColor);
+      this.get('parentView').$('.node').css('border-right-color', newColor);
 
   		this.$('.node-strip:first').css('background-color', newColor);
       this.$('.node-strip:last').css('background-color', newColor);

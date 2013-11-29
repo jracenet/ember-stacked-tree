@@ -26,11 +26,13 @@
         </button>
       {{/if}}
     </div>
-    <div {{bind-attr class="collapsed:hidden:node-content"}}>
-      {{#each child in content.childs}}
-        {{render nodeTree child}}
-      {{/each}}
-    </div>
+    {{#if hasChilds}}
+      <div {{bind-attr class="collapsed:hidden:node-content"}}>
+        {{#each child in content.childs}}
+          {{render nodeTree child}}
+        {{/each}}
+      </div>
+    {{/if}}
     <div {{bind-attr class="view.displayFooter:node-strip:hidden"}}>
       {{content.name}}
       <button {{action collapse}}>
