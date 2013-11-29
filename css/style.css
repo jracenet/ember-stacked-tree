@@ -4,20 +4,19 @@
 }
 
 .node {
+  margin: 2px 0;
+  padding: 0 5px;
 }
 
 .node-content {
-  padding: 0 5px;
 }
 
 .node-strip {
 	background-color: #04BAEE;
   min-height: 30px;
-  /*border-bottom: solid 1px white;*/
   padding: 15px;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  border-bottom: solid 1px white;
 }
 
 .node-strip button {
