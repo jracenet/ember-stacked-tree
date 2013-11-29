@@ -5,6 +5,8 @@
 <title>Ember - Stacked tree view</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
   <script type="text/x-handlebars">
@@ -24,22 +26,17 @@
         </button>
       {{/if}}
     </div>
-    <div class="node-content">
-      {{#unless collapsed}}
-        {{#each child in content.childs}}
-          {{render nodeTree child}}
-        {{/each}}
-      {{/unless}}
+    <div {{bind-attr class="collapsed:hidden:node-content"}}>
+      {{#each child in content.childs}}
+        {{render nodeTree child}}
+      {{/each}}
     </div>
-    {{#if view.displayFooter}}
-      <div class = "node-strip">
-        {{content.name}}
-        <button {{action collapse}}>
-          {{view.collapseButtonLabel}}
-        </button>
-      </div>
-    {{/if}}
-
+    <div {{bind-attr class="view.displayFooter:node-strip:hidden"}}>
+      {{content.name}}
+      <button {{action collapse}}>
+        {{view.collapseButtonLabel}}
+      </button>
+    </div>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>

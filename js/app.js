@@ -14,11 +14,11 @@ App.IndexRoute = Ember.Route.extend({
     	"name": "Parent",
     	"childs": [
     		{
-    			"name": "child 1",
+    			"name": "Child 1",
     			"childs": []
     		},
     		{
-    			"name": "child 2",
+    			"name": "Child 2",
     			"childs": [
     				{
     					"name": "A",
@@ -46,11 +46,9 @@ App.NodeTreeView = Ember.View.extend({
           newColor = this.shadeColor(color, 10);
 
   		this.$('.node-strip:first').css('background-color', newColor);
-      if(this.get('displayFooter')) {
-        this.$('.node-strip:last').css('background-color', newColor);
-      }
+      this.$('.node-strip:last').css('background-color', newColor);
     }
-	},
+  },
 
 	shadeColor: function (color, percent) {
     var R, G, B, colorComponents;
@@ -73,7 +71,7 @@ App.NodeTreeView = Ember.View.extend({
 	},
 
   collapseButtonLabel: function () {
-    return this.get('controller.collapsed')? "Expand" : "Collapse";
+    return this.get('controller.collapsed')? "+" : "-";
   }.property('controller.collapsed'),
 
   displayFooter: function () {
